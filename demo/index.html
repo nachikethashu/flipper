@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Flipper</title>
+        <link rel="stylesheet" type="text/css" href="demo.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+        <script src="../src/flipper.jquery.js"></script>
+    </head>
+
+    <body>
+        <header><h1>Flipper Demo</h1></header>
+
+        <script type="text/javascript">
+            $( document ).ready(function() {
+                jQElems = [];
+                for (var i = 0; i < modelData.length; i++) {
+                    jQElems[i] = $('<div/>',
+                        {style: "background-image: url('"+ modelData[i].src +"')", class: "img-block h-flipper"}
+                    ).append($('<h3/>').text(modelData[i].title));
+                }
+
+                $('body').flipper(jQElems);
+
+            });
+        </script>
+
+        <script type="text/javascript" src="demoData.js"></script>
+    </body>
+</html>
