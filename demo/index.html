@@ -3,6 +3,7 @@
     <head>
         <title>Flipper</title>
         <link rel="stylesheet" type="text/css" href="demo.css">
+        <link rel="stylesheet" type="text/css" href="../src/flipper.jquery.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
         <script src="../src/flipper.jquery.js"></script>
     </head>
@@ -15,7 +16,7 @@
                 jQElems = [];
                 for (var i = 0; i < modelData.length; i++) {
                     jQElems[i] = $('<div/>',
-                        {style: "background-image: url('"+ modelData[i].src +"')", class: "img-block h-flipper"}
+                        {style: "background-image: url('"+ modelData[i].src +"')", class: "img-block v-flipper"}
                     ).append($('<h3/>').text(modelData[i].title));
                 }
 
