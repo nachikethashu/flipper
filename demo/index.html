@@ -20,7 +20,11 @@
                     ).append($('<h3/>').text(modelData[i].title));
                 }
 
-                $('body').flipper(jQElems);
+                var options = {
+                    axis: 'X'
+                }
+
+                $('body').flipper(jQElems, options);
 
             });
         </script>

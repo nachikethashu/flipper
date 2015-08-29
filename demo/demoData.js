@@ -9,6 +9,6 @@ modelData = [{
         title: "Page - 3"
     },{
         src: "images/pear.jpg",
-        title: "Page - 3"
+        title: "Page - 4"
     }
 ];

@@ -14,6 +14,11 @@
 .flipper-child {
     position: absolute;
 
+    -webkit-transform-style: preserve-3d;
+            transform-style: preserve-3d;
+}
+
+.flipper-child-vertical {
     -webkit-transform: rotateX(0deg);
        -moz-transform: rotateX(0deg);
         -ms-transform: rotateX(0deg);
@@ -24,9 +29,19 @@
         -ms-transform-origin: center top;
          -o-transform-origin: center top;
             transform-origin: center top;
+}
 
-    -webkit-transform-style: preserve-3d;
-            transform-style: preserve-3d;
+.flipper-child-horizontal {
+    -webkit-transform: rotateY(0deg);
+       -moz-transform: rotateY(0deg);
+        -ms-transform: rotateY(0deg);
+         -o-transform: rotateY(0deg);
+            transform: rotateY(0deg);
+    -webkit-transform-origin: center left;
+       -moz-transform-origin: center left;
+        -ms-transform-origin: center left;
+         -o-transform-origin: center left;
+            transform-origin: center left;
 }
 
 .flipper-back-child {
@@ -35,15 +50,26 @@
 
     overflow: hidden;
 
+    -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+}
+
+.flipper-back-child-vertical {
     -webkit-transform: rotateX(180deg);
        -moz-transform: rotateX(180deg);
         -ms-transform: rotateX(180deg);
          -o-transform: rotateX(180deg);
             transform: rotateX(180deg);
-
-    -webkit-backface-visibility: hidden;
-            backface-visibility: hidden;
 }
+
+.flipper-back-child-horizontal {
+    -webkit-transform: rotateY(180deg);
+       -moz-transform: rotateY(180deg);
+        -ms-transform: rotateY(180deg);
+         -o-transform: rotateY(180deg);
+            transform: rotateY(180deg);
+}
+
 .flipper-front-child {
     position: absolute;
     z-index: 999;
