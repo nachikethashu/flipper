@@ -86,10 +86,9 @@
 
         });
 
-
         $(this).find(".flipper-front-child").click(function(event) {
             if ($(self).find('.flipper-front-child').last()[0] !== $(this)[0]) {
-                $(this).parent('.flipper-child').css('transform', 'rotate' + axis + '(180deg)');
+                $(this).parent('.flipper-child').css('transform', 'rotate' + axis + '('+ ((axis==='Y')?'-':'') +'180deg)');
                 $(this).closest('.flipper-stage').css('z-index', self.globalZindex++);
             }
         });

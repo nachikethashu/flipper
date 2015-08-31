@@ -56,7 +56,8 @@ h1 {
     width: 250px;
     height: 250px;
 
-    border-radius: 250px;
+    -webkit-border-radius: 250px;
+            border-radius: 250px;
 }
 
 .img-block {
@@ -75,4 +76,31 @@ h1 {
 
     color: brown;
     background-color: rgba(192, 192, 192, 0.42);
+}
+
+.flippers-container {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display:    -moz-box;
+    display: -ms-flexbox;
+    display:         flex;
+
+    background-color: #ea80fc ;
+
+    -webkit-align-items: center;
+            align-items: center;
+    -webkit-box-align: center;
+       -moz-box-align: center;
+    -ms-flex-align: center;
+    -ms-flex-pack: distribute;
+    -webkit-flex-wrap: wrap;
+        -ms-flex-wrap: wrap;
+            flex-wrap: wrap;
+    -webkit-justify-content: space-around;
+            justify-content: space-around;
+}
+
+.flippers-container>div {
+    margin: 10px 0;
+    border: 5px solid tomato;
 }

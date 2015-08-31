@@ -11,16 +11,18 @@
     <body>
         <header><h1>Flipper Demo</h1></header>
 
-        <div id="vFlipper" class = "v-flipper"></div>
-        <div id="hFlipper" class = "h-flipper"></div>
-        <div id="cFlipper" class = "c-flipper"></div>
-        <div id="sFlipper" class = "s-flipper"></div>
+        <div class = "flippers-container">
+            <div id="vFlipper" class = "v-flipper"></div>
+            <div id="hFlipper" class = "h-flipper"></div>
+            <div id="sFlipper" class = "s-flipper"></div>
+            <div id="cFlipper" class = "c-flipper"></div>
+        </div>
 
         <script type="text/javascript">
             $( document ).ready(function() {
                 var jQElemsV = [], jQElemsH = [], jQElemsC = [], jQElemsS = [];
                 for (var i = 0; i < modelData.length; i++) {
-                    elem = $('<div/>',
+                    var elem = $('<div/>',
                         {style: "background-image: url('"+ modelData[i].src +"')", class: "img-block"}
                     ).append($('<h3/>').text(modelData[i].title));
                     jQElemsV.push(elem.clone().addClass('v-flipper'));
