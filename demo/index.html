@@ -11,20 +11,28 @@
     <body>
         <header><h1>Flipper Demo</h1></header>
 
+        <div id="vFlipper" class = "v-flipper"></div>
+        <div id="hFlipper" class = "h-flipper"></div>
+        <div id="cFlipper" class = "c-flipper"></div>
+        <div id="sFlipper" class = "s-flipper"></div>
+
         <script type="text/javascript">
             $( document ).ready(function() {
-                jQElems = [];
+                var jQElemsV = [], jQElemsH = [], jQElemsC = [], jQElemsS = [];
                 for (var i = 0; i < modelData.length; i++) {
-                    jQElems[i] = $('<div/>',
-                        {style: "background-image: url('"+ modelData[i].src +"')", class: "img-block v-flipper"}
+                    elem = $('<div/>',
+                        {style: "background-image: url('"+ modelData[i].src +"')", class: "img-block"}
                     ).append($('<h3/>').text(modelData[i].title));
+                    jQElemsV.push(elem.clone().addClass('v-flipper'));
+                    jQElemsH.push(elem.clone().addClass('h-flipper'));
+                    jQElemsC.push(elem.clone().addClass('c-flipper'));
+                    jQElemsS.push(elem.clone().addClass('s-flipper'));
                 }
 
-                var options = {
-                    axis: 'X'
-                }
-
-                $('body').flipper(jQElems, options);
+                $('#vFlipper').flipper(jQElemsV, {axis: 'X'});
+                $('#hFlipper').flipper(jQElemsH, {axis: 'Y'});
+                $('#cFlipper').flipper(jQElemsC, {axis: 'X'});
+                $('#sFlipper').flipper(jQElemsS, {axis: 'Y'});
 
             });
         </script>
