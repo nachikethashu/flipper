@@ -12,10 +12,15 @@
 (function( $ ) {
 
     $.fn.flipper = function(elements, options) {
+        var settings = $.extend({
+            // These are the defaults.
+            axis: "Y"
+        }, options );
+
         var stage = this, self = this,
         height = this.height(), width = this.width(),
         zIndex = elements.length,
-        axis = options.axis.toUpperCase();
+        axis = settings.axis.toUpperCase();
 
         this.globalZindex = zIndex;
 
