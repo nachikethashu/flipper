@@ -72,7 +72,7 @@
 
 .flipper-front-child {
     position: absolute;
-    z-index: 999;
+    z-index: 998;
 
     overflow: hidden;
 
