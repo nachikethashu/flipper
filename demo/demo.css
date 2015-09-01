@@ -85,7 +85,7 @@ h1 {
     display: -ms-flexbox;
     display:         flex;
 
-    background-color: #ea80fc ;
+    background-color: #e3f2fd;
 
     -webkit-align-items: center;
             align-items: center;
@@ -102,5 +102,5 @@ h1 {
 
 .flippers-container>div {
     margin: 10px 0;
-    border: 5px solid tomato;
+    border: 5px solid #90caf9;
 }

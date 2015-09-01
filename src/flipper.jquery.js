@@ -13,14 +13,14 @@
 
     $.fn.flipper = function(elements, options) {
         var stage = this, self = this,
-        height = $(this).height(), width = $(this).width(),
+        height = this.height(), width = this.width(),
         zIndex = elements.length,
         axis = options.axis.toUpperCase();
 
         this.globalZindex = zIndex;
 
         var firstElemFront = $(elements[0]).clone().css('position', 'absolute');
-        firstElemFront.appendTo($(this));
+        firstElemFront.appendTo(this);
 
         $(elements).each(function(index, el) {
 
@@ -86,13 +86,13 @@
 
         });
 
-        $(this).find(".flipper-front-child").click(function(event) {
-            if ($(self).find('.flipper-front-child').last()[0] !== $(this)[0]) {
+        self.find(".flipper-front-child").click(function(event) {
+            if (self.find('.flipper-front-child').last()[0] !== $(this)[0]) {
                 $(this).parent('.flipper-child').css('transform', 'rotate' + axis + '('+ ((axis==='Y')?'-':'') +'180deg)');
                 $(this).closest('.flipper-stage').css('z-index', self.globalZindex++);
             }
         });
-        $(this).find(".flipper-back-child").click(function(event) {
+        self.find(".flipper-back-child").click(function(event) {
             $(this).parent('.flipper-child').css('transform', 'rotate'+ axis +'(0)');
             $(this).closest('.flipper-stage').css('z-index', self.globalZindex++);
         });
