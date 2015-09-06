@@ -91,7 +91,69 @@
 
         });
 
-        self.find(".flipper-front-child").click(function(event) {
+        var hammerOptions = {
+            direction: Hammer.DIRECTION_ALL
+        };
+        self.hammer(hammerOptions).bind("panup", function(event) {
+            var distance = event.gesture.distance, angle;
+            if (axis === 'X' && isLast && cachedFlipChild && (distance < height - 1)) {
+                angle = distance * 180 / height;
+                cachedFlipChild.css('transform', 'rotateX('+ angle +'deg)');
+            }
+        });
+        self.hammer(hammerOptions).bind("pandown", function(event) {
+            var distance = event.gesture.distance, angle;
+            if (axis === 'X' && isLast && cachedFlipChild && (distance < height - 1)) {
+                angle = 180 - (distance * 180 / height);
+                cachedFlipChild.css('transform', 'rotateX('+ angle +'deg)');
+            }
+        });
+        self.hammer(hammerOptions).bind("panleft", function(event) {
+            console.log("panleft");
+            var distance = event.gesture.distance, angle;
+            if (axis === 'Y' && isLast && cachedFlipChild && (distance < height - 1)) {
+                angle = distance * 180 / height;
+                cachedFlipChild.css('transform', 'rotateY('+ -angle +'deg)');
+            }
+        });
+        self.hammer(hammerOptions).bind("panright", function(event) {
+            var distance = event.gesture.distance, angle;
+            if (axis === 'Y' && isLast && cachedFlipChild && (distance < height - 1)) {
+                angle = 180 - (distance * 180 / height);
+                cachedFlipChild.css('transform', 'rotateY('+ -angle +'deg)');
+            }
+        });
+        self.find(".flipper-front-child").hammer(hammerOptions).bind("panend", function(event) {
+             if (isLast && event.gesture.distance > height/2) {
+                cachedFlipChild.css('transform', 'rotate' + axis + '('+ ((axis==='Y')?'-':'') +'180deg)').addClass('flipper-transitions');
+            } else {
+                cachedFlipChild.css('transform', 'rotate' + axis + '('+ 0 +'deg)').addClass('flipper-transitions');
+            }
+            cachedFlipChild = null;
+        });
+        self.find(".flipper-back-child").hammer(hammerOptions).bind("panend", function(event) {
+             if (isLast && event.gesture.distance > height/2) {
+                cachedFlipChild.css('transform', 'rotate' + axis + '(0deg)').addClass('flipper-transitions');
+            } else {
+                cachedFlipChild.css('transform', 'rotate' + axis + '('+ ((axis==='Y')?'-':'') +'180deg)').addClass('flipper-transitions');
+            }
+            cachedFlipChild = null;
+        });
+        var cachedFlipChild, cachedFlipStage, isLast;
+        self.find(".flipper-front-child").hammer(hammerOptions).bind("panstart", function(event) {
+            cachedFlipChild = $(this).parent('.flipper-child');
+            cachedFlipChild.removeClass('flipper-transitions');
+            $(this).closest('.flipper-stage').css('z-index', self.globalZindex++);
+            isLast = (self.find('.flipper-front-child').last()[0] !== $(this)[0]);
+        });
+        self.find(".flipper-back-child").hammer(hammerOptions).bind("panstart", function(event) {
+            cachedFlipChild = $(this).parent('.flipper-child');
+            cachedFlipChild.removeClass('flipper-transitions');
+            $(this).closest('.flipper-stage').css('z-index', self.globalZindex++);
+            isLast = true;
+        });
+
+        /*self.find(".flipper-front-child").click(function(event) {
             if (self.find('.flipper-front-child').last()[0] !== $(this)[0]) {
                 $(this).parent('.flipper-child').css('transform', 'rotate' + axis + '('+ ((axis==='Y')?'-':'') +'180deg)');
                 $(this).closest('.flipper-stage').css('z-index', self.globalZindex++);
@@ -100,7 +162,7 @@
         self.find(".flipper-back-child").click(function(event) {
             $(this).parent('.flipper-child').css('transform', 'rotate'+ axis +'(0)');
             $(this).closest('.flipper-stage').css('z-index', self.globalZindex++);
-        });
+        });*/
 
         return this;
     };

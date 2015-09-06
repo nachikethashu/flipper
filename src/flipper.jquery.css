@@ -1,8 +1,11 @@
 .flipper-child {
-    -webkit-transition: all .6s;
-       -moz-transition: all .6s;
-         -o-transition: all .6s;
-            transition: all .6s;
+}
+
+.flipper-transitions {
+    -webkit-transition: all .3s;
+       -moz-transition: all .3s;
+         -o-transition: all .3s;
+            transition: all .3s;
 }
 
 .flipper-stage {
